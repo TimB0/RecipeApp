@@ -1,8 +1,11 @@
 package com.racecondition.recipeapp;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by tboland on 8/13/16.
@@ -11,7 +14,8 @@ import android.view.ViewGroup;
 public class ListAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        return new ListViewHolder(view);
     }
 
     @Override
@@ -25,9 +29,19 @@ public class ListAdapter extends RecyclerView.Adapter {
     }
 
     private class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView mTextView;
+        private ImageView mImageView;
 
         public ListViewHolder(View itemView) {
             super(itemView);
+            mTextView = (TextView) itemView.findViewById(R.id.itemText);
+            mImageView = (ImageView) itemView.findViewById(R.id.itemImage);
+            itemView.setOnClickListener(this);
+        }
+
+        public void bindView(int postion) {
+            mTextView.setText(Recipes.names[postion]);
+            mImageView.setImageResource((Recipes.resourceIds[postion]));
         }
 
         @Override
