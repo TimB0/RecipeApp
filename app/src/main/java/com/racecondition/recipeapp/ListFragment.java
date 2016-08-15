@@ -1,6 +1,5 @@
 package com.racecondition.recipeapp;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +12,7 @@ import android.view.ViewGroup;
  * Created by tboland on 8/12/16.
  */
 
-public class ListFragment extends Fragment {
+public class ListFragment extends LoggingFragment {
 
     public interface OnRecipeSelectedInterface {
         void onListRecipeSelected(int index);
